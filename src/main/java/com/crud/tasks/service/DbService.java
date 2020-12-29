@@ -27,13 +27,4 @@ public class DbService {
         }
         return null;
     }
-
-//                    Optional<Task> taskOptional = Optional.ofNullable(repository.findById(aLong).get());
-//            return taskOptional.get();
-//        } catch (NoSuchElementException e) {
-//            System.out.println(e);
-//        }
-
-    //utwórz metodę pobierającą zadania przy użyciu id zadania
-
 }

@@ -32,7 +32,7 @@ public class TaskController {
         if (taskMapper.mapToTaskDto(service.getTaskById(taskId)) != null) {
             return taskMapper.mapToTaskDto(service.getTaskById(taskId));
         } else {
-            return new TaskDto(taskId, "Problem", "There is no Task with id = 2");
+            return new TaskDto(taskId, "Problem", "There is no Task with id = " + taskId);
         }
     }
 
