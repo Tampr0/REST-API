@@ -13,7 +13,7 @@ public class TasksApplication {
 
 
 
-		//SpringApplication.run(TasksApplication.class, args);
+		SpringApplication.run(TasksApplication.class, args);
 	}
 
 
