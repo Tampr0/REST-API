@@ -27,4 +27,15 @@ public class DbService {
         }
         return null;
     }
+
+    public Task saveTask(Task task) {
+        return repository.save(task);
+    }
+    public List<Task> saveTasks(List<Task> entities) {
+        return repository.saveAll(entities);
+    }
+
+    public void deleteTask(Long along) {
+        repository.deleteById(along);
+    }
 }
