@@ -19,15 +19,10 @@ public class TaskMapper {
     }
 
     public TaskDto mapToTaskDto(final Task task) {
-        try {
-            return new TaskDto(
+        return new TaskDto(
                 task.getId(),
                 task.getTitle(),
                 task.getContent());
-        } catch (NullPointerException e) {
-            System.out.println(e + " occurs while trying map to TaskDto.");
-        }
-        return null;
     }
 
     public List<TaskDto> mapToTaskDtoList(final List<Task> taskList) {

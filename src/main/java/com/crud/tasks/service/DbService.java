@@ -19,13 +19,8 @@ public class DbService {
         return repository.findAll();
     }
 
-    public Task getTaskById(Long aLong) {
-        try {
-            return repository.findById(aLong).get();
-        } catch (NoSuchElementException e) {
-            System.out.println(e + " occurs while trying get Task by the ID.");
-        }
-        return null;
+    public Optional<Task> getTaskById(final Long aLong) {
+        return repository.findById(aLong);
     }
 
     public Task saveTask(Task task) {

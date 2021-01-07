@@ -1,6 +1,7 @@
 package com.crud.tasks.controller;
 
 import com.crud.tasks.domain.TaskDto;
+import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.service.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,8 @@ public class TaskController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getTask")
-    public TaskDto getTask(@RequestParam("taskId") Long taskId) {
-        if (taskMapper.mapToTaskDto(service.getTaskById(taskId)) != null) {
-            return taskMapper.mapToTaskDto(service.getTaskById(taskId));
-        } else {
-            return new TaskDto(taskId, "Problem", "There is no Task like this" + taskId);
-        }
+    public TaskDto getTask(@RequestParam("taskId") Long taskId) throws TaskNotFoundException{
+        return taskMapper.mapToTaskDto(service.getTaskById(taskId).orElseThrow(TaskNotFoundException::new));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
@@ -48,11 +45,10 @@ public class TaskController {
     public void createTask(@RequestBody TaskDto taskDto) {
         service.saveTask(taskMapper.mapToTask(taskDto));
     }
+
     @RequestMapping(method = RequestMethod.POST, value = "createTasks")
     public void createTasks(@RequestBody List<TaskDto> taskDtoList) {
         service.saveTasks(taskMapper.mapToTaskList(taskDtoList));
     }
-
-
 
 }
