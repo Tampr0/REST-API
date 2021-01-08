@@ -4,7 +4,6 @@ import com.crud.tasks.domain.TrelloBoardDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -35,20 +34,14 @@ public class TrelloClient {
         return UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/members/" + trelloUsername + "/boards")
                 .queryParam("key", trelloAppKey)
                 .queryParam("token", trelloToken)
-                .queryParam("fields", "name,id").build().encode().toUri();
+                .queryParam("fields", "name,id")
+                .queryParam("lists", "all").build().encode().toUri();
     }
 
-    public List<TrelloBoardDto> getTrelloBoards() {
+    public List<TrelloBoardDto> getTrelloBoards() throws IllegalArgumentException {
 
         TrelloBoardDto[] boardResponse = restTemplate.getForObject(url(), TrelloBoardDto[].class);
-        boardResponse = null;
 
         return Arrays.asList(Optional.ofNullable(boardResponse).orElseThrow(IllegalArgumentException::new));
-
-
-//        if (boardResponse != null) {
-//            return Arrays.asList(boardResponse);
-//        }
-//        return new ArrayList<>();
     }
 }
