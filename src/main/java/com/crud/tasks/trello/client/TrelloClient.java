@@ -38,10 +38,11 @@ public class TrelloClient {
                 .queryParam("lists", "all").build().encode().toUri();
     }
 
-    public List<TrelloBoardDto> getTrelloBoards() throws IllegalArgumentException {
+    public List<TrelloBoardDto> getTrelloBoards() {
 
         TrelloBoardDto[] boardResponse = restTemplate.getForObject(url(), TrelloBoardDto[].class);
 
         return Arrays.asList(Optional.ofNullable(boardResponse).orElseThrow(IllegalArgumentException::new));
+
     }
 }
