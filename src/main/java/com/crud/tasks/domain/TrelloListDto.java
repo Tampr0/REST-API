@@ -6,15 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@JsonIgnoreProperties(ignoreUnknown = true) // annotation tells to ignore all json fields not included
-                                            // in fields of this class.
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TrelloListDto {
 
-    @JsonProperty("id")     // annotation tells to map from exact field eg. "id", you can change the name of
-                            // the field of the class and it's still gonna map from "id" field.
+    @JsonProperty("id")
     private String id;
 
     @JsonProperty("name")

@@ -22,21 +22,8 @@ public class TrelloControler {
     TrelloClient trelloClient;
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
-    public void getTrelloBoards () {
-
-        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
-        trelloBoards.forEach(trelloBoardDto -> {
-            System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
-            System.out.println("This board contains lists: ");
-            trelloBoardDto.getLists().forEach(trelloListDto ->
-                    System.out.println(trelloListDto.getName() + " - " + trelloListDto.getId() + " - " + trelloListDto.isClosed()));
-
-        });
-        try {
-            System.out.println(trelloClient.getURL());
-        } catch (MalformedURLException e) {
-            System.out.println(e);
-        }
+    public List<TrelloBoardDto> getTrelloBoards () {
+        return trelloClient.getTrelloBoards();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")

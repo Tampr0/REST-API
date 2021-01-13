@@ -24,19 +24,19 @@ public class CreatedTrelloCard {
     @JsonProperty("shortUrl")
     private String shortUrl;
 
-    private int badgesVotes;
-    private int badgesAttachmentsByTypeTrelloBoard;
-    private int badgesAttachmentsByTypeTrelloCard;
-
-    // solution from https://www.baeldung.com/jackson-nested-values
-
-    @SuppressWarnings("unchecked")
-    @JsonProperty("badges")
-    public void unpackNested(Map<String,Object> badges) {
-        this.badgesVotes = (Integer)badges.get("votes");
-        Map<String, Object> attachmentsByType = (Map<String, Object>) badges.get("attachmentsByType");
-        Map<String, Integer> trello = (Map<String, Integer>) attachmentsByType.get("trello");
-        this.badgesAttachmentsByTypeTrelloBoard = trello.get("board");
-        this.badgesAttachmentsByTypeTrelloCard = trello.get("card");
-    }
+//    private int badgesVotes;
+//    private int badgesAttachmentsByTypeTrelloBoard;
+//    private int badgesAttachmentsByTypeTrelloCard;
+//
+//    // solution from https://www.baeldung.com/jackson-nested-values
+//
+//    @SuppressWarnings("unchecked")
+//    @JsonProperty("badges")
+//    public void unpackNested(Map<String,Object> badges) {
+//        this.badgesVotes = (Integer)badges.get("votes");
+//        Map<String, Object> attachmentsByType = (Map<String, Object>) badges.get("attachmentsByType");
+//        Map<String, Integer> trello = (Map<String, Integer>) attachmentsByType.get("trello");
+//        this.badgesAttachmentsByTypeTrelloBoard = trello.get("board");
+//        this.badgesAttachmentsByTypeTrelloCard = trello.get("card");
+//    }
 }
