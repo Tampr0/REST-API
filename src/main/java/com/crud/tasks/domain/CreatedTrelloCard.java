@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 import java.util.HashMap;
 import java.util.Map;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CreatedTrelloCard {
 
@@ -22,26 +24,6 @@ public class CreatedTrelloCard {
     @JsonProperty("shortUrl")
     private String shortUrl;
 
-    public CreatedTrelloCard(String id, String name, String shortUrl) {
-        this.id = id;
-        this.name = name;
-        this.shortUrl = shortUrl;
-    }
-
-    public CreatedTrelloCard() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getShortUrl() {
-        return shortUrl;
-    }
     //    private int badgesVotes;
 //    private int badgesAttachmentsByTypeTrelloBoard;
 //    private int badgesAttachmentsByTypeTrelloCard;

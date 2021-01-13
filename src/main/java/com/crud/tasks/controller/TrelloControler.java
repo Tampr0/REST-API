@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/trello")
 public class TrelloControler {
 
     @Autowired
-    TrelloClient trelloClient;
+    private TrelloClient trelloClient;
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards () {
