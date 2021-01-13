@@ -23,6 +23,7 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDto> getTasks() {
+        System.out.println("Pobrano tasks");
         return taskMapper.mapToTaskDtoList(service.getAllTasks());
     }
 

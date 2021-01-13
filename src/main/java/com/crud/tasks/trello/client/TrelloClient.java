@@ -21,7 +21,7 @@ import java.util.List;
 
 import static java.util.Optional.ofNullable;
 
-@CrossOrigin(origins = "*")
+
 @Component
 public class TrelloClient {
 
@@ -37,7 +37,7 @@ public class TrelloClient {
         URI url = UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint() + "/members/mateuszsuszczynski/boards")
                 .queryParam("key", trelloConfig.getTrelloAppKey())
                 .queryParam("token", trelloConfig.getTrelloToken())
-                .queryParam("fields", "name,id")
+                .queryParam("fields", "id,name")
                 .queryParam("lists", "all").build().encode().toUri();
         try {
             TrelloBoardDto[] boardResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);

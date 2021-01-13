@@ -14,7 +14,7 @@ start_tomcat()
 }
 rename() {
 
-  #rm build/libs/crud.war
+  rm build/libs/crud.war
   if mv build/libs/tasks-0.0.1-SNAPSHOT.war build/libs/crud.war; then
     echo "=======Succesfully renamed file======="
   else
