@@ -5,13 +5,12 @@ import com.crud.tasks.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLOutput;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 public class DbService {
+
     @Autowired
     private TaskRepository repository;
 
@@ -25,9 +24,6 @@ public class DbService {
 
     public Task saveTask(Task task) {
         return repository.save(task);
-    }
-    public List<Task> saveTasks(List<Task> entities) {
-        return repository.saveAll(entities);
     }
 
     public void deleteTask(Long along) {
