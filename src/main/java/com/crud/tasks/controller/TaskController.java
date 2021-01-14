@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @RestController
 @RequestMapping("/v1/task")
 public class TaskController {
@@ -23,7 +23,7 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDto> getTasks() {
-        System.out.println("Pobrano tasks");
+        System.out.println("getTasks");
         return taskMapper.mapToTaskDtoList(service.getAllTasks());
     }
 
