@@ -32,11 +32,11 @@ public class SimpleEmailService {
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
-        if (mail.getToCc() == null) {
-            LOGGER.info("If toCc field remain empty, no additional receiver will be set");
-        } else {
-            mailMessage.setCc(mail.getToCc());
-        }
+//        if (mail.getToCc() == null) {
+//            LOGGER.info("If toCc field remain empty, no additional receiver will be set");
+//        } else {
+//            mailMessage.setCc(mail.getToCc());
+        //}
         return mailMessage;
     }
 

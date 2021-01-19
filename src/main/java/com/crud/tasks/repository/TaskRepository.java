@@ -18,4 +18,7 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
 
     @Override
     <S extends Task> List<S> saveAll(Iterable<S> entities);
+
+    @Override
+    long count();
 }
