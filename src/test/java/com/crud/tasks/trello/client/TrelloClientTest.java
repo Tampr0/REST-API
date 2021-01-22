@@ -1,6 +1,6 @@
 package com.crud.tasks.trello.client;
 
-import com.crud.tasks.domain.CreatedTrelloCard;
+import com.crud.tasks.domain.CreatedTrelloCardDto;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.trello.config.TrelloConfig;
@@ -46,10 +46,9 @@ public class TrelloClientTest {
         TrelloBoardDto[] trelloBoards = new TrelloBoardDto[1];
         trelloBoards[0] = new TrelloBoardDto("test_id", "test_board", new ArrayList<>());
 
-        URI uri = new URI("http://test.com/members/mateuszsuszczynski/boards?key=test&token=test&fields=name,id&lists=all");
+        URI uri = new URI("http://test.com/members/mateuszsuszczynski/boards?key=test&token=test&fields=id,name&lists=all");
 
         when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(trelloBoards);
-
         //When
         List<TrelloBoardDto> fetchedTrelloBoards = trelloClient.getTrelloBoards();
 
@@ -70,15 +69,15 @@ public class TrelloClientTest {
         );
         URI uri = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20Description&pos=top&idList=test_id");
 
-        CreatedTrelloCard createdTrelloCard = new CreatedTrelloCard(
+        CreatedTrelloCardDto createdTrelloCard = new CreatedTrelloCardDto(
                 "1",
                 "Test task",
                 "http://test.com"
         );
-        when(restTemplate.postForObject(uri, trelloCardDto, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
+        when(restTemplate.postForObject(uri, null, CreatedTrelloCardDto.class)).thenReturn(createdTrelloCard);
 
         //When
-        CreatedTrelloCard newCard = trelloClient.createNewCard(trelloCardDto);
+        CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
 
         //Then
         Assert.assertEquals("1", newCard.getId());
@@ -89,14 +88,26 @@ public class TrelloClientTest {
     @Test
     public void shouldReturnEmptyList() throws URISyntaxException {
         //Given
-        URI url = new URI("http://test.com/members/mateuszsuszczynski/boards?key=test&token=test&fields=name,id&lists=all");
-        when(restTemplate.getForObject(url, TrelloBoardDto.class)).thenReturn(null);
+        URI url = new URI("http://test.com/members/mateuszsuszczynski/boards?key=test&token=test&fields=id,name&lists=all");
+
+        //I commented this section because an UnnecessaryStubbingException occured.
+//        when(restTemplate.getForObject(url, TrelloBoardDto.class)).thenReturn(null);
+
 
         //When
         List<TrelloBoardDto> testList = trelloClient.getTrelloBoards();
 
         //Then
         Assert.assertTrue(testList.isEmpty());
+    }
+
+
+    @Test
+    public void justTestingArrays() {
+
+
+
+
     }
 
 }
