@@ -93,21 +93,11 @@ public class TrelloClientTest {
         //I commented this section because an UnnecessaryStubbingException occured.
 //        when(restTemplate.getForObject(url, TrelloBoardDto.class)).thenReturn(null);
 
-
         //When
         List<TrelloBoardDto> testList = trelloClient.getTrelloBoards();
 
         //Then
         Assert.assertTrue(testList.isEmpty());
-    }
-
-
-    @Test
-    public void justTestingArrays() {
-
-
-
-
     }
 
 }
