@@ -21,16 +21,16 @@ public class EmailScheduler {
     private AdminConfig adminConfig;
 
     //@Scheduled(cron = "0 0 10 * * *")
-    @Scheduled(fixedDelay = 10000)
-    public void sendInformationEmail() {
-
-        String message = "Currently in database you got: " + taskRepository.count() + " task.";
-        String message2 = "Currently in database you got: " + taskRepository.count() + " tasks.";
-
-        simpleEmailService.send(new Mail(
-                adminConfig.getAdminMail(),
-                SUBJECT, (taskRepository.count() == 1) ? message : message2));
-    }
+//    @Scheduled(fixedDelay = 10000)
+//    public void sendInformationEmail() {
+//
+//        String message = "Currently in database you got: " + taskRepository.count() + " task.";
+//        String message2 = "Currently in database you got: " + taskRepository.count() + " tasks.";
+//
+//        simpleEmailService.send(new Mail(
+//                adminConfig.getAdminMail(),
+//                SUBJECT, (taskRepository.count() == 1) ? message : message2));
+//    }
 }
 
 

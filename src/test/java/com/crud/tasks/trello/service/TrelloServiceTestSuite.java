@@ -40,18 +40,4 @@ public class TrelloServiceTestSuite {
         Assert.assertEquals(1, trelloBoardDtoList.size());
         Assert.assertEquals("name_board", nameBoard);
     }
-//    @Test
-//    public void shouldCreateTrelloCard() {
-//
-//
-//    }
-//    public CreatedTrelloCardDto createTrelloCard(final TrelloCardDto trelloCardDto) {
-//        CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
-//        ofNullable(newCard).ifPresent(card -> emailService.send(new Mail(
-//                adminConfig.getAdminMail(),
-//                SUBJECT,
-//                "New card: " + card.getName() + " has been created on your Trello account"
-//        )));
-//        return newCard;
-//    }
 }
