@@ -21,8 +21,8 @@ public class TrelloService {
     @Autowired
     private TrelloClient trelloClient;
 
-    @Autowired
-    private SimpleEmailService emailService;
+//    @Autowired
+//    private SimpleEmailService emailService;
 
     @Autowired
     private AdminConfig adminConfig;
@@ -33,11 +33,15 @@ public class TrelloService {
 
     public CreatedTrelloCardDto createTrelloCard(final TrelloCardDto trelloCardDto) {
         CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
-        ofNullable(newCard).ifPresent(card -> emailService.send(new Mail(
-                adminConfig.getAdminMail(),
-                SUBJECT,
-                "New card: " + card.getName() + " has been created on your Trello account"
-        )));
+
+        // this is quoted because google screamed about security, so I've decided to lock the whole
+        // sending email scheduler thingh.
+
+//        ofNullable(newCard).ifPresent(card -> emailService.send(new Mail(
+//                adminConfig.getAdminMail(),
+//                SUBJECT,
+//                "New card: " + card.getName() + " has been created on your Trello account"
+//        )));
         return newCard;
     }
 }

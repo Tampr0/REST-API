@@ -1,4 +1,4 @@
 # REST-API
 address of the server on heroku: <br />
-https://powerful-wave-02152.herokuapp.com/  <br />
+https://suhe-task-manager.herokuapp.com  <br />
 
