@@ -1,4 +1,4 @@
-# RESTful 
+# Task retriever RESTful service
 Deployed on Heroku - 
 https://suhe-task-manager.herokuapp.com  <br />
 
